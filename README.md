@@ -57,3 +57,8 @@ other_instance = FairRandom::Box.from_poro(random.to_poro)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Changes
+
+# 0.0.1
+* initial: FairRandom::Box
