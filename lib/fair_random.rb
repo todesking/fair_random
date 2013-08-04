@@ -17,7 +17,6 @@ module FairRandom
     end
 
     # Convert to PORO(Plain Old Ruby Object) for serialize.
-    # PORO := Hash{String => PORO} OR Array[PORO] OR Integer OR String
     def to_poro
       {
         'type_count' => @element_type_count,
