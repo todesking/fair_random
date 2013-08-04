@@ -41,6 +41,7 @@ class FairCoinToss
     @rng.next
   end
 end
+```
 
 #### Serialize state
 
