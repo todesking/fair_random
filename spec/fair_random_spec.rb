@@ -22,5 +22,13 @@ describe FairRandom do
       Given(:element_type_count) { 2 }
       Then { expect{box}.to raise_error ArgumentError }
     end
+    context 'serialize/deserialize with PORO' do
+      Given(:box_capacity) { 4 }
+      Given(:element_type_count) { 2 }
+      Given(:poro) { box.to_poro }
+      Given(:revived) { FairRandom::Box.from_poro(poro) }
+      When(:box_contents) { (box_capacity * 2).times.map { revived.next } }
+      Then { box_contents.count_by(&1) == {0 => 4, 1 => 4} }
+    end
   end
 end

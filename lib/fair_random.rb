@@ -16,6 +16,24 @@ module FairRandom
       c
     end
 
+    # Convert to PORO(Plain Old Ruby Object) for serialize.
+    # PORO := Hash{String => PORO} OR Array[PORO] OR Integer OR String
+    def to_poro
+      {
+        'type_count' => @element_type_count,
+        'box_capacity' => @box_capacity,
+        'contents' => @contents,
+      }
+    end
+
+    def self.from_poro(poro)
+      instance = new(poro['type_count'], poro['box_capacity'])
+      instance.instance_eval do
+        @contents = poro['contents']
+      end
+      instance
+    end
+
     private
       def reset_contents
         @contents = []
